@@ -8,6 +8,11 @@ function App() {
   const [error, setError] = useState('');
 
   const searchPokemon = async () => {
+    if (!pokemonName.trim()) {
+      setError('Please enter a Pokemon name or number');
+      return;
+    }
+
     try {
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}`);
       setPokemon(response.data);
@@ -52,35 +57,13 @@ function App() {
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
             placeholder="Enter Pokemon name/number"
+            className="pokemon-input"
           />
           <button onClick={searchPokemon}>Search</button>
         </div>
         <div className="screen">
-          {error && <p className="error">{error}</p>}
-          {pokemon ? (
-            <div className="pokemon-info">
-              <h2>{pokemon.name}</h2>
-              <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-              <h3>Stats:</h3>
-              <table className="stats-table">
-                <thead>
-                  <tr>
-                    <th>Base</th>
-                    <th>Stats</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {pokemon.stats.map((stat) => (
-                    <tr key={stat.stat.name} className={`stat-${stat.stat.name.replace('_', '-')}`}>
-                      <td>{stat.stat.name.replace('-', ' ')}</td>
-                      <td>{stat.base_stat}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100">
+          {!pokemon && !error && (
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100" className="pulse">
               <path d="M 30 50
                 a 1 1 1 0 1 40 0
                 h-12.5
@@ -102,6 +85,42 @@ function App() {
                 fill="#fff" stroke="#222"
               ></path>
             </svg>
+          )}
+          {error && (
+            <svg width="100%" height="100%">
+              <defs>
+                <linearGradient id="red-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style={{ stopColor: '#8F0808', stopOpacity: 1 }} />
+                  <stop offset="100%" style={{ stopColor: '#ff0000', stopOpacity: 1 }} />
+                </linearGradient>
+              </defs>
+              <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fill="url(#red-gradient)" fontSize="24">
+                {error}
+              </text>
+            </svg>
+          )}
+          {pokemon && (
+            <div className="pokemon-info">
+              <h2>{pokemon.name}</h2>
+              <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+              <h3>Stats:</h3>
+              <table className="stats-table">
+                <thead>
+                  <tr>
+                    <th>Base</th>
+                    <th>Stats</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pokemon.stats.map((stat) => (
+                    <tr key={stat.stat.name} className={`stat-${stat.stat.name.replace('_', '-')}`}>
+                      <td>{stat.stat.name.replace('-', ' ')}</td>
+                      <td>{stat.base_stat}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           )}
         </div>
       </div>

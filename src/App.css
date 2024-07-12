@@ -1,3 +1,19 @@
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse {
+  animation: pulse 1s infinite;
+}
+
 .gradient-text {
   font-size: 1.5em;
   font-weight: bold;
@@ -22,13 +38,18 @@
 
 .screen {
   width: 310px;
-  height: 420px;
+  height: 450px;
   background: linear-gradient(to right, #00f, #0ff, #00f);
-
   border: 10px solid white;
   border-radius: 10px;
   overflow-y: auto;
   margin-top: 10px;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.screen::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
 }
 
 .indicator {
@@ -38,13 +59,13 @@
   border: 3px solid white;
   border-radius: 50%;
   position: absolute;
-  top: 20px;
+  top: 5px; /* Adjusted from 20px to 10px */
   left: 20px;
 }
 
 .lights {
   position: absolute;
-  top: 30px;
+  top: 10px; /* Adjusted from 30px to 20px */
   left: 70px;
 }
 
@@ -56,7 +77,7 @@
   margin-right: 5px;
 }
 
-.red { background-color: #ff3333; }
+.red { background-color: #8F0808; }
 .yellow { background-color: #ffff00; }
 .green { background-color: #00ff00; }
 
@@ -98,6 +119,14 @@ input {
   text-align: end;
 }
 
+.pokemon-input {
+  height: 13px; /* Adjust the height as needed */
+  font-size: 16px; /* Adjust the font size as needed */
+  padding: 5px; 
+  border: 1px solid #ccc;
+  border-radius: 25px;
+}
+
 input:focus {
   border-color: #3399ff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -121,8 +150,16 @@ button:hover {
 }
 
 .error {
-  color: red;
+  color: #8F0808;
+  font-size: 1.7em; /* Increase the font size */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Make it take the full height of the parent */
+  text-align: center; /* Center the text */
 }
+
+
 
 .pokemon-info {
   margin-top: 20px;
@@ -163,7 +200,6 @@ h3 {
   font-size: 12px;
   opacity: 0.9;
 }
-
 
 .stats-table th, .stats-table td {
   padding: 6px;
