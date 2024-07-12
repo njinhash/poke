@@ -9,7 +9,7 @@ function App() {
 
   const searchPokemon = async () => {
     if (!pokemonName.trim()) {
-      setError('Please enter a Pokemon name or number');
+      setError('enter a Pokemon name or #');
       return;
     }
 
@@ -56,7 +56,7 @@ function App() {
             value={pokemonName}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
-            placeholder="Enter Pokemon name/number"
+            placeholder="Enter Pokemon name or #"
             className="pokemon-input"
           />
           <button onClick={searchPokemon}>Search</button>
