@@ -56,7 +56,7 @@ function App() {
             value={pokemonName}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
-            placeholder="Enter Pokemon name or #"
+            placeholder="E.g. squirtle or 7"
             className="pokemon-input"
           />
           <button onClick={searchPokemon}>Search</button>
