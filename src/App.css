@@ -1,38 +1,118 @@
+.device {
+  width: 350px;
+  height: 600px;
+  background-color: #ff0000;
+  border-radius: 20px;
+  position: relative;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.screen {
+  width: 310px;
+  height: 450px;
+  background-color: #08FFFF;
+  border: 10px solid white;
+  border-radius: 10px;
+  margin-top: 60px;
+  overflow-y: auto;
+}
+
+.indicator {
+  width: 40px;
+  height: 40px;
+  background-color: #3399ff;
+  border: 3px solid white;
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.lights {
+  position: absolute;
+  top: 30px;
+  left: 70px;
+}
+
+.light {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.red { background-color: #ff3333; }
+.yellow { background-color: #ffff00; }
+.green { background-color: #00ff00; }
+
+.d-pad {
+  width: 50px;
+  height: 50px;
+  background-color: #333;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 50%;
+}
+
+.button {
+  width: 60px;
+  height: 30px;
+  background-color: #00ff00;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  border-radius: 15px;
+}
+
 .App {
   text-align: center;
+  padding: 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+input {
+  padding: 5px;
+  margin-right: 5px;
+  width: 60%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button {
+  padding: 5px 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.error {
+  color: red;
 }
 
-.App-link {
-  color: #61dafb;
+.pokemon-info {
+  margin-top: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.pokemon-info img {
+  max-width: 100px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 5px 0;
+  font-size: 0.9em;
+}
+
+h1 {
+  font-size: 1.5em;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 1.2em;
+}
+
+h3 {
+  font-size: 1em;
 }
